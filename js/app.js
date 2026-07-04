@@ -38,8 +38,33 @@
     calculate();
   }
 
+  function formatCOPInput() {
+    const input = dom.copInput;
+    const cursor = input.selectionStart;
+    const digitsBefore = input.value.substring(0, cursor).replace(/\D/g, '').length;
+    const digits = input.value.replace(/\D/g, '');
+
+    if (digits === '') {
+      input.value = '';
+      return;
+    }
+
+    const formatted = Number(digits).toLocaleString('es-CO').replace(/,/g, '');
+    if (formatted === input.value) return;
+
+    input.value = formatted;
+
+    let newCursor = 0;
+    for (let i = 0, d = 0; i < formatted.length && d < digitsBefore; i++) {
+      if (formatted[i] >= '0' && formatted[i] <= '9') d++;
+      if (d < digitsBefore) newCursor = i + 1;
+    }
+    if (digitsBefore === 0) newCursor = 0;
+    input.setSelectionRange(newCursor, newCursor);
+  }
+
   function calculate() {
-    const raw = dom.copInput.value.replace(/[.,\s]/g, '');
+    const raw = dom.copInput.value.replace(/\./g, '');
     const cop = parseFloat(raw);
     if (isNaN(cop) || cop <= 0) {
       dom.results.hidden = true;
@@ -90,7 +115,10 @@
     }
   }
 
-  dom.copInput.addEventListener('input', calculate);
+  dom.copInput.addEventListener('input', () => {
+    formatCOPInput();
+    calculate();
+  });
 
   dom.refreshBtn.addEventListener('click', () => loadRates(true));
 
