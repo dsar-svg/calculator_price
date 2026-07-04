@@ -29,34 +29,6 @@
       </div>
     </section>
 
-    <section class="rate-section">
-      <div class="rate-info">
-        <span class="rate-label">Tasa BCV</span>
-        <button class="refresh-btn" id="refreshRate" aria-label="Actualizar tasa">↻</button>
-      </div>
-      <div class="rate-cards">
-        <div class="rate-card">
-          <span class="rate-currency">EUR</span>
-          <span class="rate-value" id="eurRate">—</span>
-          <span class="rate-unit">VES</span>
-        </div>
-        <div class="rate-card">
-          <span class="rate-currency">USD</span>
-          <span class="rate-value" id="usdRate">—</span>
-          <span class="rate-unit">VES</span>
-        </div>
-      </div>
-      <div class="rate-manual">
-        <button class="manual-toggle" id="manualToggle">Ingresar tasa manualmente</button>
-        <div class="manual-inputs" id="manualInputs" hidden>
-          <input type="number" id="manualEur" placeholder="EUR (VES)" step="0.01" inputmode="decimal">
-          <input type="number" id="manualUsd" placeholder="USD (VES)" step="0.01" inputmode="decimal">
-          <button class="btn-small" id="applyManual">Aplicar</button>
-        </div>
-      </div>
-      <p class="rate-date" id="rateDate">Cargando tasa BCV...</p>
-    </section>
-
     <section class="results" id="results" hidden>
       <div class="result-card" data-currency="ves">
         <div class="result-header">
@@ -79,6 +51,26 @@
         </div>
         <div class="result-value" id="usdResult">0,00</div>
       </div>
+    </section>
+
+    <section class="rate-section">
+      <div class="rate-info">
+        <span class="rate-label">Tasa BCV</span>
+        <button class="refresh-btn" id="refreshRate" aria-label="Actualizar tasa">↻</button>
+      </div>
+      <div class="rate-cards">
+        <div class="rate-card">
+          <span class="rate-currency">EUR</span>
+          <span class="rate-value" id="eurRate">—</span>
+          <span class="rate-unit">VES</span>
+        </div>
+        <div class="rate-card">
+          <span class="rate-currency">USD</span>
+          <span class="rate-value" id="usdRate">—</span>
+          <span class="rate-unit">VES</span>
+        </div>
+      </div>
+      <p class="rate-date" id="rateDate">Cargando tasa BCV...</p>
     </section>
 
     <footer class="footer">

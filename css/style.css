@@ -257,69 +257,6 @@ body {
   margin-top: 10px;
 }
 
-.rate-manual {
-  margin-top: 12px;
-}
-
-.manual-toggle {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  font-size: 0.8rem;
-  cursor: pointer;
-  text-decoration: underline;
-  text-decoration-style: dotted;
-  text-underline-offset: 3px;
-  transition: var(--transition);
-}
-
-.manual-toggle:hover {
-  color: var(--accent-ves);
-}
-
-.manual-inputs {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
-  align-items: center;
-}
-
-.manual-inputs input {
-  flex: 1;
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  font-family: var(--font);
-  outline: none;
-  transition: var(--transition);
-}
-
-.manual-inputs input:focus {
-  border-color: var(--accent-ves);
-}
-
-.btn-small {
-  background: var(--accent-ves);
-  color: #0b0b1a;
-  border: none;
-  border-radius: var(--radius-sm);
-  padding: 10px 16px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: var(--transition);
-  white-space: nowrap;
-  font-family: var(--font);
-}
-
-.btn-small:hover {
-  opacity: 0.85;
-  transform: translateY(-1px);
-}
-
 .results {
   display: flex;
   flex-direction: column;
@@ -471,13 +408,6 @@ body {
     background: var(--bg-secondary);
   }
 
-  .btn-small {
-    color: white;
-  }
-
-  .manual-inputs input {
-    background: var(--bg-primary);
-  }
 }
 
 .light-theme {
@@ -502,10 +432,4 @@ body.light-theme {
   background: var(--bg-secondary);
 }
 
-.light-theme .btn-small {
-  color: white;
-}
 
-.light-theme .manual-inputs input {
-  background: var(--bg-primary);
-}

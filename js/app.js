@@ -4,12 +4,6 @@
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   });
-  const FORMAT_COP = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  });
 
   const dom = {
     copInput: document.getElementById('copInput'),
@@ -21,11 +15,6 @@
     usdRate: document.getElementById('usdRate'),
     rateDate: document.getElementById('rateDate'),
     refreshBtn: document.getElementById('refreshRate'),
-    manualToggle: document.getElementById('manualToggle'),
-    manualInputs: document.getElementById('manualInputs'),
-    manualEur: document.getElementById('manualEur'),
-    manualUsd: document.getElementById('manualUsd'),
-    applyManual: document.getElementById('applyManual'),
     themeToggle: document.getElementById('themeToggle')
   };
 
@@ -94,7 +83,7 @@
       if (!cached) {
         dom.eurRate.textContent = 'Error';
         dom.usdRate.textContent = 'Error';
-        dom.rateDate.textContent = 'No se pudo obtener la tasa. Ingresa manualmente.';
+        dom.rateDate.textContent = 'No se pudo obtener la tasa.';
       }
     } finally {
       dom.refreshBtn.classList.remove('spinning');
@@ -104,32 +93,6 @@
   dom.copInput.addEventListener('input', calculate);
 
   dom.refreshBtn.addEventListener('click', () => loadRates(true));
-
-  dom.manualToggle.addEventListener('click', () => {
-    const hidden = dom.manualInputs.hidden;
-    dom.manualInputs.hidden = !hidden;
-    dom.manualToggle.textContent = hidden
-      ? 'Ocultar ingreso manual'
-      : 'Ingresar tasa manualmente';
-    if (hidden && rates.eur) {
-      dom.manualEur.value = rates.eur;
-      dom.manualUsd.value = rates.usd;
-    }
-  });
-
-  dom.applyManual.addEventListener('click', () => {
-    const eur = parseFloat(dom.manualEur.value);
-    const usd = parseFloat(dom.manualUsd.value);
-    if (isNaN(eur) || eur <= 0) return;
-
-    setRates({
-      eur, usd: (isNaN(usd) || usd <= 0) ? eur * 0.874 : usd,
-      date: 'manual',
-      timestamp: Date.now()
-    });
-    dom.manualInputs.hidden = true;
-    dom.manualToggle.textContent = 'Ingresar tasa manualmente';
-  });
 
   dom.themeToggle.addEventListener('click', () => {
     document.body.classList.toggle('light-theme');
