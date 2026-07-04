@@ -7,6 +7,7 @@
 
   const dom = {
     copInput: document.getElementById('copInput'),
+    copHint: document.getElementById('copHint'),
     vesResult: document.getElementById('vesResult'),
     eurResult: document.getElementById('eurResult'),
     usdResult: document.getElementById('usdResult'),
@@ -65,12 +66,14 @@
 
   function calculate() {
     const raw = dom.copInput.value.replace(/\./g, '');
-    const cop = parseFloat(raw);
+    const cop = parseFloat(raw) * 1000;
     if (isNaN(cop) || cop <= 0) {
+      dom.copHint.textContent = '';
       dom.results.hidden = true;
       return;
     }
 
+    dom.copHint.textContent = `= ${cop.toLocaleString('es-CO')} COP`;
     const ves = cop / COP_TO_VES;
     dom.vesResult.textContent = FORMAT.format(ves);
 

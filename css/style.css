@@ -146,6 +146,14 @@ body {
   opacity: 0.5;
 }
 
+.cop-hint {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  min-height: 1.2em;
+  text-align: right;
+}
+
 .input-group input::-webkit-outer-spin-button,
 .input-group input::-webkit-inner-spin-button {
   -webkit-appearance: none;
